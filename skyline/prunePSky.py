@@ -134,15 +134,16 @@ class prunePSky():
         remove rtree data and index file
         """
         try:
-            os.remove(str(self.dim)+'d_index.data')
-            os.remove(str(self.dim)+'d_index.index')
+            # print(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')) + '\\' + str(self.dim)+'d_index.data')
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')) + '\\' + str(self.dim)+'d_index.data')
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')) + '\\' + str(self.dim)+'d_index.index')
             print('Files removed')
         except:
             print('No such files')
 
 if __name__ == '__main__':
     test = prunePSky(3, drange=[0,100],radius=2)
-    test.loadData('10000_dim2_pos5_rad5_01000.csv')
+    test.loadData('100_dim2_pos5_rad5_010.csv')
     print("Load...")
     test.createIndex(2)
     print("createIndex...")
@@ -150,11 +151,11 @@ if __name__ == '__main__':
     print("pruning...")
     test.calculateUSky()
     print("calculateUSky...")
-    visualize(test.getOrigin(),3, [0,100])
+    visualize(test.getOrigin(),3, [0,100],"getOrigin111")
     print("visualize1...")
-    visualize(test.getPruned(),3, [0,100])
+    visualize(test.getPruned(),3, [0,100],"getPruned222")
     print("visualize2...")
-    visualize(test.getCandidate(),3, [0,100])
+    visualize(test.getCandidate(),3, [0,100],"getCandidate333")
     print("visualize3...")
     test.removeRtree()
     print("removeRtree...")

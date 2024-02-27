@@ -63,7 +63,7 @@ if __name__ == '__main__':
     
     test = slideBPSky(2, 3, 3, [0,100], wsize=10)
     # print('10_dim'+str(test.dim)+'_pos'+str(test.ps)+'_rad'+str(test.radius)+'_0100.csv')
-    dqueue = batchImport('10000_dim4_pos5_rad5_01000.csv',test.ps)
+    dqueue = batchImport('100_dim2_pos5_rad5_010.csv',test.ps)
     
     # dqueue = batchImport('10_dim'+str(test.dim)+'_pos'+str(test.ps)+'_rad'+str(test.radius)+'_0100.csv',test.ps)
     start_time = time.time()
@@ -71,21 +71,21 @@ if __name__ == '__main__':
         print("\n========",i+1,"=========")
         test.receiveData(dqueue[i])
         test.updateSkyline()
-        # print("skyline",len(test.skyline))
-        # for k in range(len(test.skyline)):
-        #     print(test.skyline[k])
-        # print("skyline2",len(test.skyline2))
-        # if i == 300:
-        #     print("Window: "+str(len(test.getWindow())))
-        #     print("Sk: "+ str(len(test.getSkyline())))
-        #     # for each in test.getSkyline():
-        #     #     print(each)
-        #     print("Sk2: "+ str(len(test.getSkyline2())))
-        # name1="SW"
-        # name2="sk"
-        # visualize(test.getWindow(), test.ps, [0,100],name1)
-        # visualize(test.getSkyline(), test.ps, [0,100],name2)
-        #     visualize(test.getSkyline2(), 5, [0,1000])
-        #     print()
+        print("skyline",len(test.skyline))
+        for k in range(len(test.skyline)):
+            print(test.skyline[k])
+        print("skyline2",len(test.skyline2))
+        if i == 300:
+            print("Window: "+str(len(test.getWindow())))
+            print("Sk: "+ str(len(test.getSkyline())))
+            # for each in test.getSkyline():
+            #     print(each)
+            print("Sk2: "+ str(len(test.getSkyline2())))
+        name1="SW"
+        name2="sk"
+        visualize(test.getWindow(), test.ps, [0,100],name1)
+        visualize(test.getSkyline(), test.ps, [0,100],name2)
+        visualize(test.getSkyline2(), 5, [0,1000],"skyb")
+        print()
     test.removeRtree()
     print("--- %s seconds ---" % (time.time() - start_time))

@@ -1,6 +1,7 @@
 # Sliding window update PSky
 import os, sys
-sys.path.append(os.path.abspath(os.pardir))
+# sys.path.append(os.path.abspath(os.pardir))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
 
 import time
 from rtree import index
@@ -96,13 +97,17 @@ class slideUPSky(PSky):
         self.skyline2 = skyline2
 
 if __name__ == '__main__':
-    test = slideUPSky(10, 5, 5, [0,1000], wsize=300)
-    dqueue = batchImport('10000_dim'+str(test.dim)+'_pos'+str(test.ps)+'_rad'+str(test.radius)+'_01000.csv',test.ps)
+    # test = slideUPSky(10, 5, 5, [0,1000], wsize=300)
+    # dqueue = batchImport('10000_dim'+str(test.dim)+'_pos'+str(test.ps)+'_rad'+str(test.radius)+'_01000.csv',test.ps)
+    
+    test = slideUPSky(2, 3, 3, [0,100], wsize=10)
+    # print('10_dim'+str(test.dim)+'_pos'+str(test.ps)+'_rad'+str(test.radius)+'_0100.csv')
+    dqueue = batchImport('100_dim2_pos5_rad5_010.csv',test.ps)
     
     # path = 'epsutest-ori.txt'
     # f = open(path,'a+')
     start_time = time.time()
-    for i in range(10000):
+    for i in range(100):
 
         print("\n========",i+1,"=========")
         # f.write('\n========{a}=========\n'.format(a=i+1))
