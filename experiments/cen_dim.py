@@ -3,7 +3,8 @@
 # Data: dimension from 2 to 10
 # Sliding window = 300
 import os, sys
-sys.path.append(os.path.abspath(os.pardir))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
+# sys.path.append(os.path.abspath(os.pardir))
 
 import time
 
@@ -17,7 +18,8 @@ def dim_time():
     for d in dim:
         path = 'rtree_dim_result-nosk2.txt'
         f = open(path,'a+')
-        dqueue = batchImport('10000_dim'+str(d)+'_pos5_rad5_01000.csv', 5)
+        dqueue = batchImport('10000_dim2_pos5_rad5_01000.csv', 5)
+        # dqueue = batchImport('10000_dim'+str(d)+'_pos5_rad5_01000.csv', 5)
         print('========== Data dimension = '+ str(d) + ' ==========')
         print('---------- PRPO ----------')
         f.write('========== Data dimension = {a} ==========\n'. format(a= str(d)))
